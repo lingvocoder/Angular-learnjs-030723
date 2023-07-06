@@ -8,8 +8,8 @@
     "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "prerttier:fix": "prettier --write",
-    "prerttier:fix:all": "prettier --write .",
+    "prettier:fix": "prettier --write",
+    "prettier:fix:all": "prettier --write .",
     "lint": "ng lint",
     "prepare": "husky install"
   },
