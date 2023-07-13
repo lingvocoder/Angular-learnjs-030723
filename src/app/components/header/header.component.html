@@ -5,28 +5,8 @@
         class="example-icon"
         (click)="menuClick(); $event.stopPropagation()"
     >
-        <!-- (click)="menuClick()"
-
-                |
-                v
-
-            button.addEventListener('click', () => {
-                menuClick()
-            })-->
-        <!-- (click)="menuClick($event)"
-
-                |
-                v
-
-            button.addEventListener('click', $event => {
-                menuClick($event);
-                $event.stopPropagation();
-            })-->
         <mat-icon>menu</mat-icon>
     </button>
-    <!-- <img class="shop-icon" src="{{imgSrc}}"> -->
-    <!-- <img class="shop-icon" [src]="imgSrc" [style.width.px]="100"> -->
-    <!-- <img class="shop-icon" [src]="imgSrc" [class.active]="isActiveTab"> -->
     <img alt="Shop logo" class="shop-icon" [src]="imgSrc" />
     <span>{{ title }}</span>
     <span class="example-spacer"></span>
@@ -37,7 +17,6 @@
     >
         <mat-icon>favorite</mat-icon>
     </button>
-    <!-- selector: 'button[mat-icon-button]', -->
     <button mat-icon-button aria-label="Example icon-button with share icon" class="example-icon">
         <mat-icon>share</mat-icon>
     </button>

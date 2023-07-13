@@ -7,24 +7,15 @@ import {AppComponent} from './app.component';
 import {HeaderModule} from './components/header/header.module';
 import {ProductsListModule} from './pages/products-list/products-list.module';
 
-// Component/Directive
-
-// Pipe
-
-// Module
-
-// Service
-
 @NgModule({
-    declarations: [AppComponent], // const
-    exports: [], // module.exports = {...}
+    declarations: [AppComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         HeaderModule,
         ProductsListModule,
-    ], // import {...} from '...'
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
