@@ -1,0 +1,27 @@
+<!-- <mat-drawer-container class="example-container" autosize>
+    <mat-drawer
+        class="example-sidenav"
+        mode="side"
+        [opened]="isSidenavOpened"
+    >
+        <p>Auto-resizing sidenav</p>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+        <button type="button" mat-button (click)="toggleSidenavOpened()">
+            Toggle sidenav
+        </button>
+    </div>
+</mat-drawer-container> -->
+<mat-drawer-container autosize class="example-container">
+    <mat-drawer #drawerComponent mode="side" class="example-sidenav">
+        <p>Auto-resizing sidenav</p>
+    </mat-drawer>
+
+    <div #divElement class="example-sidenav-content test">
+        {{ divElement.classList.toString() }}
+        <button #buttonComponent type="button" mat-button (click)="toggleSidenavOpened()">
+            Toggle sidenav
+        </button>
+    </div>
+</mat-drawer-container>

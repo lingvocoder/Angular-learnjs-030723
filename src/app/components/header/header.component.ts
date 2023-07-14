@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {IApplicationConfig} from '../../shared/application-config/application-config.interface';
 
 @Component({
     selector: 'app-header',
@@ -6,11 +7,20 @@ import {Component} from '@angular/core';
     styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-    readonly imgSrc = '../../../favicon.ico';
-    readonly title = 'Angular-learnjs-030723';
+    @Input() applicationConfig: IApplicationConfig | null = null;
 
-    menuClick() {
+    // @Output() readonly menuClick = new EventEmitter<string>();
+    @Output() readonly menuClick = new EventEmitter<void>();
+    // @Output() readonly menuClick = of(1, 2, 3);
+
+    // readonly imgSrc = '../../../favicon.ico';
+    // readonly title = 'Angular-learnjs-030723';
+
+    onMenuClick() {
         // eslint-disable-next-line no-console
-        console.log('Menu click');
+        console.log('Menu click - HeaderComponent');
+
+        // this.menuClick.emit('clicked');
+        this.menuClick.emit();
     }
 }
