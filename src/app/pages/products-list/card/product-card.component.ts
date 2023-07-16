@@ -9,12 +9,11 @@ import {IProduct} from '../../../shared/products/product.interface';
 })
 export class ProductCardComponent {
     productItem: IProduct = productMock;
+    itemImgUrl: string = this.productItem.images[0].url;
 
-    onButtonClick(event: Event): void {
+    onProductItemBuy(event: Event): void {
         event.stopPropagation();
     }
-
-    onProductCardClick() {}
 
     isIconActive(iconIndex: number): boolean {
         return this.productItem.rating >= iconIndex;

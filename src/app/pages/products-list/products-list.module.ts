@@ -1,10 +1,11 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {ProductsListComponent} from './products-list.component';
+import {ProductCardComponent} from './card/product-card.component';
 
 @NgModule({
-    declarations: [ProductsListComponent],
-    imports: [CommonModule],
+    declarations: [ProductsListComponent, ProductCardComponent],
+    imports: [CommonModule, NgOptimizedImage],
     exports: [ProductsListComponent],
 })
 export class ProductsListModule {}
