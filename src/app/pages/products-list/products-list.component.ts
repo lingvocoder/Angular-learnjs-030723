@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {productsMock} from '../../shared/products/products.mock';
+import {IProduct} from '../../shared/products/product.interface';
 
 @Component({
     selector: 'app-products-list',
@@ -7,8 +9,16 @@ import {Component} from '@angular/core';
     // encapsulation: ViewEncapsulation.Emulated,
 })
 export class ProductsListComponent {
-    onCardClick() {
+    protected readonly productsMock: IProduct[] = productsMock;
+    productItemsAdded: object[] = [];
+
+    onCardClick(newProductItem: IProduct) {
+        this.addItem(newProductItem);
         // eslint-disable-next-line no-console
-        console.log('Card click');
+        console.log(this.productItemsAdded);
+    }
+
+    addItem(newItem: IProduct) {
+        this.productItemsAdded.push(newItem);
     }
 }

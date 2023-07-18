@@ -1,5 +1,20 @@
-<app-card class="card" (click)="onCardClick()"></app-card>
-<app-card class="card" (click)="onCardClick()"></app-card>
-<app-card class="card" (click)="onCardClick()"></app-card>
-<app-card class="card" (click)="onCardClick()"></app-card>
-<app-card class="card" (click)="onCardClick()"></app-card>
+<app-card
+    class="card"
+    [product]="productsMock[0]"
+    (buyProductItem)="onCardClick($event)"
+></app-card>
+<app-card
+    class="card"
+    [product]="productsMock[1]"
+    (buyProductItem)="onCardClick($event)"
+></app-card>
+<app-card
+    class="card"
+    [product]="productsMock[2]"
+    (buyProductItem)="onCardClick($event)"
+></app-card>
+<app-card
+    class="card"
+    [product]="productsMock[3]"
+    (buyProductItem)="onCardClick($event)"
+></app-card>
