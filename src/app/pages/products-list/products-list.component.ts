@@ -6,7 +6,6 @@ import {IProduct} from '../../shared/products/product.interface';
     selector: 'app-products-list',
     templateUrl: './products-list.component.html',
     styleUrls: ['./products-list.component.css'],
-    // encapsulation: ViewEncapsulation.Emulated,
 })
 export class ProductsListComponent {
     readonly products = productsMock;
@@ -15,4 +14,44 @@ export class ProductsListComponent {
         // eslint-disable-next-line no-console
         console.log(id);
     }
+
+    // constructor() {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: constructor');
+    // }
+
+    // ngOnChanges(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: OnChanges');
+    // }
+
+    // ngOnInit(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: OnInit');
+    // }
+
+    // ngDoCheck(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: DoCheck');
+    // }
+
+    // ngAfterContentInit(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: AfterContentInit');
+    // }
+
+    // ngAfterContentChecked(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: ngAfterContentChecked');
+    // }
+
+    // ngAfterViewInit(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: AfterViewInit');
+    // }
+
+    // ngAfterViewChecked(): void {
+    //     // eslint-disable-next-line no-console
+    //     console.log('ProductsListComponent: AfterViewChecked');
+    // }
 }
