@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {productsMock} from '../../shared/products/products.mock';
 import {IProduct} from '../../shared/products/product.interface';
 
@@ -7,11 +7,24 @@ import {IProduct} from '../../shared/products/product.interface';
     templateUrl: './products-list.component.html',
     styleUrls: ['./products-list.component.css'],
 })
-export class ProductsListComponent {
-    readonly products = productsMock;
+export class ProductsListComponent implements OnInit {
+    products: IProduct[] | null = null;
+
+    ngOnInit(): void {
+        setTimeout(() => {
+            this.products = productsMock;
+        }, 3000);
+    }
 
     onProductBuy(id: IProduct['_id']) {
         // eslint-disable-next-line no-console
         console.log(id);
+    }
+
+    get productsFromGet(): IProduct[] | null {
+        // eslint-disable-next-line no-console
+        console.log('Get products');
+
+        return this.products;
     }
 }

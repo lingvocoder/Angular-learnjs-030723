@@ -1,13 +1,20 @@
-<app-header [applicationConfig]="applicationConfig"></app-header>
+<app-header
+    [applicationConfig]="applicationConfig"
+    (menuClick)="sidenavComponent.toggleSidenavOpened()"
+></app-header>
 <app-sidenav #sidenavComponent>
-    <ng-template #navigationTemplate>
+    <!-- <ng-template #navigationTemplate> -->
+    <ng-container ngProjectAs="list">
         <h2>{{ applicationConfig.title }}</h2>
         <mat-list role="list">
-            <mat-list-item role="listitem">Item 1</mat-list-item>
-            <mat-list-item role="listitem">Item 2</mat-list-item>
-            <mat-list-item role="listitem">Item 3</mat-list-item>
+            <mat-list-item appInsertShadow role="listitem">Item 1</mat-list-item>
+            <mat-list-item appInsertShadow role="listitem">Item 2</mat-list-item>
+            <mat-list-item appInsertShadow role="listitem">Item 3</mat-list-item>
         </mat-list>
-    </ng-template>
+    </ng-container>
+    <!-- <h3>Products list</h3> -->
+    <app-products-list></app-products-list>
+    <!-- </ng-template> -->
 </app-sidenav>
 
 <!-- <app-popup-host [template]="null"></app-popup-host> -->
