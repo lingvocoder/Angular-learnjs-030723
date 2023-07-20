@@ -6,15 +6,6 @@ import {IProduct} from '../../../shared/products/product.interface';
     templateUrl: './card.component.html',
     styleUrls: ['./card.component.css'],
 })
-// implements
-//     OnChanges,
-//     OnInit,
-//     DoCheck,
-//     AfterContentInit,
-//     AfterContentChecked,
-//     AfterViewInit,
-//     AfterViewChecked,
-//     OnDestroy
 export class CardComponent {
     @Input() product: IProduct | undefined;
 
@@ -30,51 +21,4 @@ export class CardComponent {
     isStarActive(starIndex: number): boolean {
         return !!this.product && this.product.rating >= starIndex;
     }
-
-    // constructor() {
-    //     // eslint-disable-next-line no-console
-    //     console.log('CardComponent: constructor', this.product);
-    // }
-
-    // ngOnChanges({product}: SimpleChanges): void {
-    //     if (product) {
-    //         // eslint-disable-next-line no-console
-    //         console.log('Show notification by product change');
-    //     }
-    // }
-
-    // ngOnInit(): void {
-    //     // eslint-disable-next-line no-console
-    //     console.log('CardComponent: OnInit', this.product);
-    // }
-
-    // ngDoCheck(): void {
-    //     // eslint-disable-next-line no-console
-    //     console.log('CardComponent: DoCheck');
-    // }
-
-    // ngAfterContentInit(): void {
-    //     // eslint-disable-next-line no-console
-    //     console.log('CardComponent: AfterContentInit');
-    // }
-
-    // ngAfterContentChecked(): void {
-    //     // eslint-disable-next-line no-console
-    //     console.log('CardComponent: ngAfterContentChecked');
-    // }
-
-    // ngAfterViewInit(): void {
-    //     // eslint-disable-next-line no-console
-    //     console.log('CardComponent: AfterViewInit');
-    // }
-
-    // ngAfterViewChecked(): void {
-    //     // eslint-disable-next-line no-console
-    //     console.log('CardComponent: AfterViewChecked');
-    // }
-
-    // ngOnDestroy(): void {
-    //     // eslint-disable-next-line no-console
-    //     console.log('CardComponent: ngOnDestroy');
-    // }
 }
