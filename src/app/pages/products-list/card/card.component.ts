@@ -8,7 +8,7 @@ import {IProduct} from '../../../shared/products/product.interface';
 })
 export class CardComponent {
     @Input() product: IProduct | undefined = undefined;
-    @Output() buyProductItem = new EventEmitter();
+    @Output() buyProductItem: EventEmitter<object> = new EventEmitter<object>();
 
     onProductBuy(event: Event) {
         event.stopPropagation();
@@ -23,6 +23,6 @@ export class CardComponent {
     }
 
     isStarActive(starIndex: number): boolean {
-        return this.product !== undefined ? this.product.rating >= starIndex : false;
+        return this.product ? this.product.rating >= starIndex : false;
     }
 }
