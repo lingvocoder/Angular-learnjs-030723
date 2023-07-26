@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {applicationConfigMock} from './shared/application-config/application-config.mock';
-import {IApplicationConfig} from './shared/application-config/application-config.interface';
 
 @Component({
     selector: 'app-root',
@@ -8,7 +7,7 @@ import {IApplicationConfig} from './shared/application-config/application-config
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-    readonly applicationConfig: IApplicationConfig = applicationConfigMock;
+    readonly applicationConfig = applicationConfigMock;
 
     // shouldShowSidenav = false;
 

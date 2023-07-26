@@ -8,16 +8,12 @@ import {IProduct} from '../../../shared/products/product.interface';
 })
 export class CardComponent {
     @Input() product: IProduct | undefined = undefined;
-    @Output() buyProductItem: EventEmitter<object> = new EventEmitter<object>();
+    @Output() buyProductItem = new EventEmitter<IProduct>();
 
     onProductBuy(event: Event) {
         event.stopPropagation();
-        const item = {
-            id: this.product?._id,
-            price: this.product?.price,
-        };
 
-        this.buyProductItem.emit(item);
+        this.buyProductItem.emit(this.product);
         // eslint-disable-next-line no-console
         console.log('Buy product');
     }
