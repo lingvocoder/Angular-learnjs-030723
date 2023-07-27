@@ -1,11 +1,4 @@
-import {
-    Component,
-    ContentChild,
-    OnInit,
-    TemplateRef,
-    ViewChild,
-    ViewContainerRef,
-} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {MatDrawer} from '@angular/material/sidenav';
 
 @Component({
@@ -13,26 +6,11 @@ import {MatDrawer} from '@angular/material/sidenav';
     templateUrl: './sidenav.component.html',
     styleUrls: ['./sidenav.component.css'],
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent {
     @ViewChild(MatDrawer, {static: true})
     private readonly drawerComponent!: MatDrawer;
 
-    @ViewChild('viewport', {read: ViewContainerRef, static: true})
-    private readonly viewport!: ViewContainerRef;
-
-    @ContentChild('navigationTemplate', {static: true, descendants: true})
-    private readonly navigationTemplate!: TemplateRef<unknown>;
-
     toggleSidenavOpened() {
         this.drawerComponent?.toggle();
-    }
-
-    ngOnInit(): void {
-        this.insertNavigationTemplate(this.navigationTemplate);
-    }
-
-    private insertNavigationTemplate(template: TemplateRef<unknown>) {
-        this.viewport?.clear();
-        this.viewport?.createEmbeddedView(template);
     }
 }
