@@ -1,32 +1,41 @@
-<ng-template let-productsFromNgIf [appDumpNgIf]="products">
-    <div class="scroll-container">
-        <app-card
-            class="card"
-            [product]="productsFromNgIf[0]"
-            (buy)="onProductBuy($event)"
-        ></app-card>
-        <app-card
-            class="card"
-            [product]="productsFromNgIf[1]"
-            (buy)="onProductBuy($event)"
-        ></app-card>
-        <app-card
-            class="card"
-            [product]="productsFromNgIf[2]"
-            (buy)="onProductBuy($event)"
-        ></app-card>
-        <app-card
-            class="card"
-            [product]="productsFromNgIf[3]"
-            (buy)="onProductBuy($event)"
-        ></app-card>
-        <app-card
-            class="card"
-            [product]="productsFromNgIf[4]"
-            (buy)="onProductBuy($event)"
-        ></app-card>
-    </div>
-</ng-template>
+<!-- <ng-template let-productsFromNgIf [ngIf]="products" [ngIfElse]="loader"> -->
+<div
+    *ngIf="products as productsFromInput; else loader; let productsFromNgIf"
+    class="scroll-container"
+>
+    <app-card
+        *ngFor="let product of productsFromInput; trackBy: trackById"
+        class="card"
+        [product]="product"
+        (buy)="onProductBuy($event)"
+    ></app-card>
+    <!-- <app-card
+        class="card"
+        [product]="productsFromInput[0]"
+        (buy)="onProductBuy($event)"
+    ></app-card>
+    <app-card
+        class="card"
+        [product]="productsFromInput[1]"
+        (buy)="onProductBuy($event)"
+    ></app-card>
+    <app-card
+        class="card"
+        [product]="productsFromInput[2]"
+        (buy)="onProductBuy($event)"
+    ></app-card>
+    <app-card
+        class="card"
+        [product]="productsFromInput[3]"
+        (buy)="onProductBuy($event)"
+    ></app-card>
+    <app-card
+        class="card"
+        [product]="productsFromInput[4]"
+        (buy)="onProductBuy($event)"
+    ></app-card> -->
+</div>
+<!-- </ng-template> -->
 
 <ng-template #loader>
     <mat-spinner></mat-spinner>
