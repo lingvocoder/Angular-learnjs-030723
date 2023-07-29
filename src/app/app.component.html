@@ -19,7 +19,7 @@
 
 <!-- Switch template -->
 
-<!--<app-popup-host [template]='switchTemplate ? first : second'></app-popup-host>-->
+<app-popup-host [template]="switchTemplate ? first : second"></app-popup-host>
 <ng-template #first>
     <div class="modal">
         <div class="modal__content">
@@ -144,7 +144,7 @@
 
 <!-- Close template -->
 
-<app-popup-host [template]="!closeTemplate ? first : null"></app-popup-host>
+<!--<app-popup-host [template]="!closeTemplate ? first : null"></app-popup-host>-->
 
 <!-- <ng-template #first>
     <h2>First</h2>
