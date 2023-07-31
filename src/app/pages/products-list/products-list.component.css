@@ -38,3 +38,16 @@
     align-items: center;
     width: 100%;
 }
+
+.pagination__page-number {
+    cursor: pointer;
+}
+
+.pagination__page-number_active {
+    color: rgb(0, 13, 255);
+}
+
+.pagination__page-number-container {
+    display: flex;
+    overflow: auto;
+}
