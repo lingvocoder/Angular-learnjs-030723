@@ -9,14 +9,4 @@ import {applicationConfigMock} from './shared/application-config/application-con
 })
 export class AppComponent {
     readonly applicationConfig = applicationConfigMock;
-
-    // constructor(private readonly applicatioRef: ApplicationRef) {}
-
-    // ngOnInit(): void {
-    // setInterval(() => {
-    //     // eslint-disable-next-line no-console
-    //     console.log('Trigger CD');
-    //     this.applicatioRef.tick();
-    // }, 100);
-    // }
 }

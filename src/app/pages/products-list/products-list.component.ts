@@ -14,20 +14,10 @@ export class ProductsListComponent implements OnInit {
     constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
 
     ngOnInit(): void {
-        // this.changeDetectorRef.detach();
-        // this.changeDetectorRef.detectChanges();
-
         setTimeout(() => {
             this.products = productsMock;
-            // this.changeDetectorRef.detectChanges();
             this.changeDetectorRef.markForCheck();
         }, 3000);
-        setTimeout(() => {
-            this.products = productsMock.map(item => ({...item, feedbacksCount: 5}));
-            // this.changeDetectorRef.detectChanges();
-            // this.changeDetectorRef.reattach();
-            this.changeDetectorRef.markForCheck();
-        }, 6000);
     }
 
     onProductBuy(id: IProduct['_id']) {
