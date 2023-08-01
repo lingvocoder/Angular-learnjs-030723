@@ -16,9 +16,10 @@
 	> -->
 
     <!-- hard -->
-    <!-- <ng-container
+    <ng-container
         *appPagination="
-            let productsGroup of products | filterByProperty : propertyName : searchPropertyValue;
+            let productsGroup of productsFromInput
+                | filterByProperty : propertyName : searchPropertyValue;
             chankSize: 4;
             let pageIndexes = pageIndexes;
             let activeIndex = index;
@@ -26,8 +27,8 @@
             let back = back;
             let selectIndex = selectIndex
         "
-    > -->
-    <ng-container
+    >
+        <!-- <ng-container
         *appPagination="
             let productsGroup of productsFromInput;
             chankSize: 4;
@@ -37,7 +38,7 @@
             let back = back;
             let selectIndex = selectIndex
         "
-    >
+    > -->
         <div class="cards">
             <app-card
                 *ngFor="let product of productsGroup; trackBy: trackById"
