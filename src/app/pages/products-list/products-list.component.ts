@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {productsMock} from '../../shared/products/products.mock';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {IProduct} from '../../shared/products/product.interface';
+import {ProductsStoreService} from '../../shared/products/products-store.service';
 
 @Component({
     selector: 'app-products-list',
@@ -9,15 +9,33 @@ import {IProduct} from '../../shared/products/product.interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent implements OnInit {
-    products: IProduct[] | null = null;
+    // private readonly backendService = new BackendService();
+    // private readonly productsStoreService = new ProductsStoreService(
+    //     new HttpClient(
+    //         backendService,
+    //         new AjaxServce(
+    //             backendService,
+    //         ),
+    //     )
+    // );
+    readonly products$ = this.productsStoreService.products$;
 
-    constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
+    // constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
+    // constructor(@Inject(ProductsStoreService) private readonly productsStoreService: ProductsStoreService) {}
+    constructor(
+        private readonly productsStoreService: ProductsStoreService, // @Inject('ProductsStoreService') // private readonly productsStoreServiceString: ProductsStoreService,
+    ) {
+        // eslint-disable-next-line no-console
+        // console.log(this.productsStoreServiceString);
+    }
 
     ngOnInit(): void {
-        setTimeout(() => {
-            this.products = productsMock;
-            this.changeDetectorRef.markForCheck();
-        }, 3000);
+        this.productsStoreService.loadProducts();
+
+        // setTimeout(() => {
+        //     this.products = productsMock;
+        //     this.changeDetectorRef.markForCheck();
+        // }, 3000);
     }
 
     onProductBuy(id: IProduct['_id']) {

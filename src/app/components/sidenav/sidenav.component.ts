@@ -12,6 +12,7 @@ export class SidenavComponent {
     private readonly drawerComponent!: MatDrawer;
 
     constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
+    // constructor(@Inject(ChangeDetectorRef) private readonly changeDetectorRef: ChangeDetectorRef) {}
 
     toggleSidenavOpened() {
         this.drawerComponent?.toggle();

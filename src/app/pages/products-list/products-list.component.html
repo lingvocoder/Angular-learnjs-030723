@@ -1,10 +1,10 @@
 <div
-    *ngIf="products as productsFromInput; else loader; let productsFromNgIf"
+    *ngIf="products$ | async as productsFromInput; else loader; let productsFromNgIf"
     class="scroll-container"
 >
     <ng-container
         *appPagination="
-            let productsGroup of products;
+            let productsGroup of productsFromInput;
             chankSize: 4;
             let pageIndexes = pageIndexes;
             let activeIndex = index;

@@ -6,6 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {ProductsListComponent} from './products-list.component';
 import {CardModule} from './card/card.module';
 import {PaginationModule} from '../../shared/pagination/pagination.module';
+import {MyAsyncModule} from '../../shared/my-async/my-async.module';
 
 @NgModule({
     declarations: [ProductsListComponent],
@@ -16,6 +17,7 @@ import {PaginationModule} from '../../shared/pagination/pagination.module';
         MatButtonModule,
         MatIconModule,
         PaginationModule,
+        MyAsyncModule,
     ],
     exports: [ProductsListComponent],
 })
