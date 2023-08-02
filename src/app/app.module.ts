@@ -3,17 +3,15 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderModule} from './components/header/header.module';
-import {ProductsListModule} from './pages/products-list/products-list.module';
 import {SidenavModule} from './components/sidenav/sidenav.module';
 import {PopupHostModule} from './components/popup-host/popup-host.module';
 import {InsertShadowModule} from './shared/insert-shadow/insert-shadow.module';
-import {ProductsStoreService} from './shared/products/products-store.service';
-import {ProductsApiService} from './shared/products/products-api.service';
-import {BASE_URL} from './shared/base-url/base-url.token';
-import {baseUrl} from './shared/base-url/base-url.const';
+import {BaseUrlInterceptor} from './shared/base-url/base-url.interceptor';
+import {SCOPE_NAME} from './shared/scope-name/scope-name.token';
 
 @NgModule({
     declarations: [AppComponent],
@@ -22,20 +20,66 @@ import {baseUrl} from './shared/base-url/base-url.const';
         AppRoutingModule,
         BrowserAnimationsModule,
         HeaderModule,
-        ProductsListModule,
         SidenavModule,
         MatListModule,
         PopupHostModule,
         InsertShadowModule,
+        HttpClientModule,
     ],
     providers: [
-        ProductsStoreService,
-        ProductsApiService,
+        // ...ProductsListModule.providers,
+
+        // ProductsStoreService,
+        // ProductsApiService,
+        // {
+        //     provide: BASE_URL,
+        //     useValue: baseUrl,
+        // },
         {
-            provide: BASE_URL,
-            useValue: baseUrl,
+            provide: HTTP_INTERCEPTORS,
+            multi: true,
+            useClass: BaseUrlInterceptor,
         },
+        {
+            provide: SCOPE_NAME,
+            useValue: 'RootInjector(AppModuleInjector)',
+        },
+
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     multi: true,
+        //     useClass: ErrorInterceptor,
+        // },
+        /**
+         * BaseUrlInterceptor.intercept(request) -> ErrorInterceptor.intercept(newRequest)
+         *
+         * (BaseUrlInterceptor) handle(newRequest) === ErrorInterceptor.intercept(newRequest)
+         */
     ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+/**
+ * NullInjector
+ *
+ * |
+ *
+ * PlatformInjector
+ *
+ * |
+ *
+ * RootInjector(bootsrap module injector - AppModuleInjector)
+ *
+ * |
+ *
+ * AppComponentElementInjector
+ *
+ * |                                    \
+ *
+ * SidenavComponentElementInjector      HeaderComponentElementInjector
+ *
+ * |
+ *
+ * ProductsListComponentElementInjector
+ */
