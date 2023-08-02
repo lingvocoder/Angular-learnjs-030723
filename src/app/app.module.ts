@@ -29,31 +29,8 @@ import {baseUrl} from './shared/base-url/base-url.const';
         InsertShadowModule,
     ],
     providers: [
-        // {
-        //     provide: ProductsStoreService, // token
-        //     useClass: ProductsStoreService,
-        // },
         ProductsStoreService,
         ProductsApiService,
-        // {
-        //     provide: 'ProductsStoreService',
-        //     useValue: 'new ProductsStoreService()',
-        //     multi: true,
-        // },
-        // {
-        //     provide: ProductsStoreService, // token
-        //     useValue: new ProductsStoreService(),
-        // },
-        // {
-        //     provide: 'ProductsStoreService',
-        //     useExisting: ProductsStoreService,
-        //     multi: true,
-        // },
-        // {
-        //     provide: 'ProductsStoreService',
-        //     useFactory: (productsStoreService: ProductsStoreService) => productsStoreService,
-        //     deps: [ProductsStoreService],
-        // },
         {
             provide: BASE_URL,
             useValue: baseUrl,

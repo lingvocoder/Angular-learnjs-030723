@@ -2,24 +2,9 @@
     *ngIf="products$ | async as productsFromInput; else loader; let productsFromNgIf"
     class="scroll-container"
 >
-    <!-- easy -->
-    <!-- <ng-container
-		*appPagination="
-			let productsGroup of (products | productsFilter : name);
-			chankSize: 4;
-			let pageIndexes = pageIndexes;
-			let activeIndex = index;
-			let next = next;
-			let back = back;
-			let selectIndex = selectIndex
-		"
-	> -->
-
-    <!-- hard -->
     <ng-container
         *appPagination="
-            let productsGroup of productsFromInput
-                | filterByProperty : propertyName : searchPropertyValue;
+            let productsGroup of productsFromInput | filterByProperty : 'name' : '';
             chankSize: 4;
             let pageIndexes = pageIndexes;
             let activeIndex = index;
@@ -28,17 +13,6 @@
             let selectIndex = selectIndex
         "
     >
-        <!-- <ng-container
-        *appPagination="
-            let productsGroup of productsFromInput;
-            chankSize: 4;
-            let pageIndexes = pageIndexes;
-            let activeIndex = index;
-            let next = next;
-            let back = back;
-            let selectIndex = selectIndex
-        "
-    > -->
         <div class="cards">
             <app-card
                 *ngFor="let product of productsGroup; trackBy: trackById"

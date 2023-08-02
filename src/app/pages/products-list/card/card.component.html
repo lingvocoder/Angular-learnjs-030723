@@ -1,11 +1,9 @@
 <mat-card class="card">
     <mat-card-header>
         <mat-card-title>{{ product?.name }}</mat-card-title>
-        <!-- <mat-card-subtitle>{{ getPrice(product?.price) }}</mat-card-subtitle> -->
         <mat-card-subtitle>
             {{ product?.price | currency : 'RUB' : 'symbol-narrow' : '1.0-0' }}
         </mat-card-subtitle>
-        <!-- <mat-card-subtitle>{{ currency.transform(product?.price) }}</mat-card-subtitle> -->
     </mat-card-header>
     <div
         *appCarousel="let img of product?.images; let next = next; let back = back"
