@@ -3,6 +3,8 @@ import {Inject, Injectable} from '@angular/core';
 import {IProduct} from './product.interface';
 import {productsMock} from './products.mock';
 import {BASE_URL} from '../base-url/base-url.token';
+import {IProductsDto} from './products.dto';
+import {IProductDto} from './product.dto';
 
 @Injectable()
 export class ProductsApiService {
@@ -12,6 +14,10 @@ export class ProductsApiService {
     }
 
     getProducts$(): Observable<IProduct[]> {
-        return of({data: {items: productsMock}}).pipe(map(({data}) => data.items));
+        return of<IProductsDto>({data: {items: productsMock}}).pipe(map(({data}) => data.items));
+    }
+
+    getProduct$(_id: string): Observable<IProduct | undefined> {
+        return of<IProductDto>({data: productsMock[0]}).pipe(map(({data}) => data));
     }
 }
