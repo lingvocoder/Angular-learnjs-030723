@@ -7,10 +7,6 @@ import {ProductComponent} from './pages/product/product.component';
 import {NotFoundComponent} from './pages/not-found/not-found.component';
 import {NotFoundModule} from './pages/not-found/not-found.module';
 
-// http://localhost:4200/ - origin = '';
-// http://localhost:4200/products-list - origin = 'products-list';
-// http://localhost:4200/product/id - origin = 'product/id';
-
 const routes: Routes = [
     {
         path: '',

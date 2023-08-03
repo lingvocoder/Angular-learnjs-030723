@@ -12,23 +12,6 @@ export class BaseUrlInterceptor implements HttpInterceptor {
             url: this.baseUrl + request.url,
         });
 
-        return next
-            .handle(newRequest)
-            .pipe
-            // tap(responce => {
-            //     // eslint-disable-next-line no-console
-            //     console.log(responce);
-
-            //     if (responce instanceof HttpResponse) {
-            //         // eslint-disable-next-line no-console
-            //         console.log((responce.body as any)?.data);
-
-            //         return;
-            //     }
-
-            //     // eslint-disable-next-line no-console
-            //     console.log('other responce');
-            // }),
-            ();
+        return next.handle(newRequest).pipe();
     }
 }

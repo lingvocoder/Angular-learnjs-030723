@@ -27,14 +27,6 @@ import {SCOPE_NAME} from './shared/scope-name/scope-name.token';
         HttpClientModule,
     ],
     providers: [
-        // ...ProductsListModule.providers,
-
-        // ProductsStoreService,
-        // ProductsApiService,
-        // {
-        //     provide: BASE_URL,
-        //     useValue: baseUrl,
-        // },
         {
             provide: HTTP_INTERCEPTORS,
             multi: true,
@@ -44,17 +36,6 @@ import {SCOPE_NAME} from './shared/scope-name/scope-name.token';
             provide: SCOPE_NAME,
             useValue: 'RootInjector(AppModuleInjector)',
         },
-
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     multi: true,
-        //     useClass: ErrorInterceptor,
-        // },
-        /**
-         * BaseUrlInterceptor.intercept(request) -> ErrorInterceptor.intercept(newRequest)
-         *
-         * (BaseUrlInterceptor) handle(newRequest) === ErrorInterceptor.intercept(newRequest)
-         */
     ],
     bootstrap: [AppComponent],
 })
