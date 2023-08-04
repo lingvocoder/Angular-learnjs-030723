@@ -10,6 +10,7 @@ import {PaginationModule} from '../../shared/pagination/pagination.module';
 import {MyAsyncModule} from '../../shared/my-async/my-async.module';
 import {FilterByPropertyModule} from '../../shared/filter-by-property/filter-by-property.module';
 import {SCOPE_NAME} from '../../shared/scope-name/scope-name.token';
+import {ProductsListRoutingModule} from './products-list-routing.module';
 
 @NgModule({
     declarations: [ProductsListComponent],
@@ -23,8 +24,10 @@ import {SCOPE_NAME} from '../../shared/scope-name/scope-name.token';
         MyAsyncModule,
         FilterByPropertyModule,
         RouterModule,
+        ProductsListRoutingModule,
     ],
     providers: [
+        // ...CardModule.providers,
         {
             provide: SCOPE_NAME,
             useValue: 'ProductsListModule',

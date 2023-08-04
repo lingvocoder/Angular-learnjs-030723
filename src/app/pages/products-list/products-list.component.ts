@@ -1,25 +1,40 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {map} from 'rxjs';
 import {IProduct} from '../../shared/products/product.interface';
 import {ProductsStoreService} from '../../shared/products/products-store.service';
+import {SCOPE_NAME} from '../../shared/scope-name/scope-name.token';
 
 @Component({
     selector: 'app-products-list',
     templateUrl: './products-list.component.html',
     styleUrls: ['./products-list.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    // providers: [
+    //     {
+    //         provide: SCOPE_NAME,
+    //         useValue: 'ProductsListComponent',
+    //     },
+    // ],
 })
-export class ProductsListComponent implements OnInit {
-    readonly products$ = this.productsStoreService.products$;
+export class ProductsListComponent {
+    // readonly products$ = this.productsStoreService.products$;
+    // eslint-disable-next-line dot-notation
+    readonly products$ = this.activatedRoute.data.pipe(map(data => data['products'] as IProduct[]));
 
     constructor(
         private readonly productsStoreService: ProductsStoreService,
-        private readonly router: Router,
-    ) {}
-
-    ngOnInit(): void {
-        this.productsStoreService.loadProducts();
+        @Inject(SCOPE_NAME) private readonly scopeName: string,
+        private readonly activatedRoute: ActivatedRoute,
+    ) {
+        // console.log('ProductsListComponent', this.scopeName);
+        // eslint-disable-next-line no-console
+        console.log(this.activatedRoute.snapshot);
     }
+
+    // ngOnInit(): void {
+    //     // this.productsStoreService.loadProducts();
+    // }
 
     onProductBuy(id: IProduct['_id']) {
         // eslint-disable-next-line no-console

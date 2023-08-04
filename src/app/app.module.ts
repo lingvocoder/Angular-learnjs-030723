@@ -52,15 +52,19 @@ export class AppModule {}
  *
  * RootInjector(bootsrap module injector - AppModuleInjector)
  *
- * |
+ * |                                    \
+ *
+ * ProductsListModuleInjector           ProductModuleInjector
+ *
+ * --------------------------------------------------
  *
  * AppComponentElementInjector
  *
- * |                                    \
+ * |                                                \
  *
- * SidenavComponentElementInjector      HeaderComponentElementInjector
+ * SidenavComponentElementInjector                  HeaderComponentElementInjector
  *
- * |
+ * |                                        \
  *
- * ProductsListComponentElementInjector
+ * ProductsListComponentElementInjector     ProductComponentElementInjector
  */
