@@ -3,7 +3,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {NotFoundComponent} from './pages/not-found/not-found.component';
 import {NotFoundModule} from './pages/not-found/not-found.module';
 import {CustomPreloadingService} from './shared/custom-preloading/custom-preloading.service';
-import {ProductsResolver} from './shared/question-guard/products.resolver';
 
 // 'product' / 'id' / 'type'
 
@@ -28,9 +27,9 @@ const routes: Routes = [
         // component: ProductsListComponent,
         loadChildren: () =>
             import('./pages/products-list/products-list.module').then(m => m.ProductsListModule),
-        resolve: {
-            products: ProductsResolver,
-        },
+        // resolve: {
+        //     products: ProductsResolver,
+        // },
         data: {
             needPreload: true,
         },
