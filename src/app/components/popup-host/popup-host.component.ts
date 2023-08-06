@@ -1,7 +1,8 @@
 import {
-    AfterViewChecked,
     Component,
     Input,
+    OnChanges,
+    SimpleChanges,
     TemplateRef,
     ViewChild,
     ViewContainerRef,
@@ -12,16 +13,24 @@ import {
     templateUrl: './popup-host.component.html',
     styleUrls: ['./popup-host.component.css'],
 })
-export class PopupHostComponent implements AfterViewChecked {
+export class PopupHostComponent implements OnChanges {
     @Input() template: TemplateRef<unknown> | null = null;
     @ViewChild('viewport', {read: ViewContainerRef, static: true})
-    private readonly viewport: ViewContainerRef | null = null;
+    private readonly viewport!: ViewContainerRef;
 
-    ngAfterViewChecked() {
-        this.viewport?.clear();
+    ngOnChanges(template: SimpleChanges): void {
+        if (this.viewport.length) {
+            this.viewport.clear();
+        }
 
-        if (this.template) {
-            this.viewport?.createEmbeddedView(this.template);
+        if (template) {
+            this.updateView(this.template);
+        }
+    }
+
+    updateView(template: TemplateRef<unknown> | null) {
+        if (template) {
+            this.viewport.createEmbeddedView(template);
         }
     }
 }

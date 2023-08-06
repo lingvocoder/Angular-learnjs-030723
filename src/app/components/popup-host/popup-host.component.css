@@ -34,7 +34,7 @@
     opacity: 0.6;
 }
 
-:host /deep/ .modal {
+.container {
     position: relative;
     width: 384px;
     height: auto;
@@ -42,107 +42,4 @@
     background: #ffffff;
     box-shadow: 24px 16px 31px -4px rgba(0, 11, 41, 0.06), 0 0 16px rgba(0, 11, 41, 0.03);
     border-radius: 12px;
-}
-
-:host /deep/ .modal__counter {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: rgb(222, 12, 212);
-}
-
-:host /deep/ .modal__content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    padding: 0.5rem 1.25rem 0;
-    font-family: Helvetica, Arial, sans-serif;
-}
-
-:host /deep/ .modal__row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    height: auto;
-}
-
-:host /deep/ .modal__row_sub {
-    margin-top: 1rem;
-}
-
-:host /deep/ .modal__text {
-    font-style: normal;
-}
-
-:host /deep/ .modal__text_sub {
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.25rem;
-    text-align: left;
-    color: #1d1d1d;
-}
-
-:host /deep/ .modal__text_action {
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 1rem;
-    color: #ffffff;
-}
-
-:host /deep/ .modal__text_feature {
-    font-weight: 400;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    color: rgb(0, 0, 0);
-}
-
-:host /deep/ .modal__text_title {
-    font-family: Helvetica, Roboto, sans-serif;
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    text-align: left;
-    letter-spacing: -0.2px;
-    color: rgb(0, 0, 0);
-}
-
-:host /deep/ .modal__feature-list {
-    width: 100%;
-    padding: 0;
-    margin: 1.5rem 0;
-}
-
-:host /deep/ .modal__feature {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    text-align: left;
-}
-
-:host /deep/ .modal__feature:not(:last-child) {
-    margin-bottom: 0.5rem;
-}
-
-:host /deep/ .modal__link {
-    text-decoration: none;
-    cursor: pointer;
-}
-
-:host /deep/ .modal__action {
-    position: relative;
-    width: 100%;
-    background-color: rgb(47, 121, 232);
-    border-radius: 3px;
-    padding: 1rem 1.5rem;
-    text-align: center;
-    z-index: 100;
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 0.8;
-    }
-    to {
-        opacity: 0;
-    }
 }

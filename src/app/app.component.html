@@ -21,124 +21,18 @@
 
 <app-popup-host [template]="switchTemplate ? first : second"></app-popup-host>
 <ng-template #first>
-    <div class="modal">
-        <div class="modal__content">
-            <div class="modal__row">
-                <p class="modal__text modal__text_title">
-                    <span class="modal__counter">#1</span>
-                    Angular's
-                    <code>&lsaquo;ng-template&rsaquo;</code>
-                    element defines a template that is not rendered by default.
-                </p>
-            </div>
-            <div class="modal__row modal__row_sub">
-                <h3 class="modal__text modal__text_sub">Why ng-template rules:</h3>
-            </div>
-            <div class="modal__row">
-                <ul class="modal__feature-list">
-                    <li class="modal__feature">
-                        <span class="modal__text modal__text_feature">
-                            You have full control over how and when the content is displayed.
-                        </span>
-                    </li>
-                    <li class="modal__feature">
-                        <span class="modal__text modal__text_feature">
-                            You define template content that is only being rendered by Angular when
-                            you, instruct it to do so.
-                        </span>
-                    </li>
-                    <li class="modal__feature">
-                        <span class="modal__text modal__text_feature">
-                            You can display copies of
-                            <code>&lsaquo;ng-template&rsaquo;</code>
-                            content by means of structural directives
-                        </span>
-                    </li>
-                    <li class="modal__feature">
-                        <span class="modal__text modal__text_feature">
-                            Inside the
-                            <code>&lsaquo;ng-template&rsaquo;</code>
-                            tags you can reference variables present in the surrounding outer
-                            template
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <div class="modal__row">
-                <a
-                    rel="noreferrer"
-                    href="https://learn.javascript.ru/courses"
-                    target="_blank"
-                    class="modal__action modal__link"
-                >
-                    <span class="modal__text modal__text_action">
-                        Read more
-                        <b>#1</b>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </div>
+    <h2>First</h2>
+    <p>
+        This template
+        <b>#1</b>
+    </p>
 </ng-template>
 <ng-template #second>
-    <div class="modal">
-        <div class="modal__content">
-            <div class="modal__row">
-                <p class="modal__text modal__text_title">
-                    <span class="modal__counter">#2</span>
-                    Angular's
-                    <code>&lsaquo;ng-template&rsaquo;</code>
-                    element defines a template that is not rendered by default.
-                </p>
-            </div>
-            <div class="modal__row modal__row_sub">
-                <h3 class="modal__text modal__text_sub">Why ng-template rules:</h3>
-            </div>
-            <div class="modal__row">
-                <ul class="modal__feature-list">
-                    <li class="modal__feature">
-                        <span class="modal__text modal__text_feature">
-                            You have full control over how and when the content is displayed.
-                        </span>
-                    </li>
-                    <li class="modal__feature">
-                        <span class="modal__text modal__text_feature">
-                            You define template content that is only being rendered by Angular when
-                            you, instruct it to do so.
-                        </span>
-                    </li>
-                    <li class="modal__feature">
-                        <span class="modal__text modal__text_feature">
-                            You can display copies of
-                            <code>&lsaquo;ng-template&rsaquo;</code>
-                            content by means of structural directives
-                        </span>
-                    </li>
-                    <li class="modal__feature">
-                        <span class="modal__text modal__text_feature">
-                            Inside the
-                            <code>&lsaquo;ng-template&rsaquo;</code>
-                            tags you can reference variables present in the surrounding outer
-                            template
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <div class="modal__row">
-                <a
-                    rel="noreferrer"
-                    href="https://learn.javascript.ru/courses"
-                    target="_blank"
-                    class="modal__action modal__link"
-                >
-                    <span class="modal__text modal__text_action">
-                        Read more
-                        <b>#2</b>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </div>
+    <h2>Second</h2>
+    <p>
+        This template
+        <b>#2</b>
+    </p>
 </ng-template>
 <!-- or -->
 
