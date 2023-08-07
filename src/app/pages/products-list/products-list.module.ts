@@ -11,6 +11,7 @@ import {MyAsyncModule} from '../../shared/my-async/my-async.module';
 import {FilterByPropertyModule} from '../../shared/filter-by-property/filter-by-property.module';
 import {SCOPE_NAME} from '../../shared/scope-name/scope-name.token';
 import {ProductsListRoutingModule} from './products-list-routing.module';
+import {CounterInputModule} from '../../shared/counter-input/counter-input.module';
 
 @NgModule({
     declarations: [ProductsListComponent],
@@ -25,6 +26,7 @@ import {ProductsListRoutingModule} from './products-list-routing.module';
         FilterByPropertyModule,
         RouterModule,
         ProductsListRoutingModule,
+        CounterInputModule,
     ],
     providers: [
         // ...CardModule.providers,
