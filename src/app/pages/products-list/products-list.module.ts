@@ -9,7 +9,6 @@ import {CardModule} from './card/card.module';
 import {PaginationModule} from '../../shared/pagination/pagination.module';
 import {MyAsyncModule} from '../../shared/my-async/my-async.module';
 import {FilterByPropertyModule} from '../../shared/filter-by-property/filter-by-property.module';
-import {SCOPE_NAME} from '../../shared/scope-name/scope-name.token';
 import {ProductsListRoutingModule} from './products-list-routing.module';
 import {CounterInputModule} from '../../shared/counter-input/counter-input.module';
 
@@ -27,13 +26,6 @@ import {CounterInputModule} from '../../shared/counter-input/counter-input.modul
         RouterModule,
         ProductsListRoutingModule,
         CounterInputModule,
-    ],
-    providers: [
-        // ...CardModule.providers,
-        {
-            provide: SCOPE_NAME,
-            useValue: 'ProductsListModule',
-        },
     ],
     exports: [ProductsListComponent],
 })

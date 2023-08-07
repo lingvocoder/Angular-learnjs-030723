@@ -4,8 +4,7 @@ import {IProduct} from './product.interface';
 import {ProductsApiService} from './products-api.service';
 
 @Injectable({
-    providedIn: 'root', // RootInjector,
-    // providedIn: 'platform', // PlatformInjector,
+    providedIn: 'root',
 })
 export class ProductsStoreService {
     private readonly productsStore$ = new BehaviorSubject<IProduct[] | null>(null);
