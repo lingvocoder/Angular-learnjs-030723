@@ -11,7 +11,6 @@ import {SidenavModule} from './components/sidenav/sidenav.module';
 import {PopupHostModule} from './components/popup-host/popup-host.module';
 import {InsertShadowModule} from './shared/insert-shadow/insert-shadow.module';
 import {BaseUrlInterceptor} from './shared/base-url/base-url.interceptor';
-import {SCOPE_NAME} from './shared/scope-name/scope-name.token';
 
 @NgModule({
     declarations: [AppComponent],
@@ -32,39 +31,7 @@ import {SCOPE_NAME} from './shared/scope-name/scope-name.token';
             multi: true,
             useClass: BaseUrlInterceptor,
         },
-        {
-            provide: SCOPE_NAME,
-            useValue: 'RootInjector(AppModuleInjector)',
-        },
     ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
-
-/**
- * NullInjector
- *
- * |
- *
- * PlatformInjector
- *
- * |
- *
- * RootInjector(bootsrap module injector - AppModuleInjector)
- *
- * |                                    \
- *
- * ProductsListModuleInjector           ProductModuleInjector
- *
- * --------------------------------------------------
- *
- * AppComponentElementInjector
- *
- * |                                                \
- *
- * SidenavComponentElementInjector                  HeaderComponentElementInjector
- *
- * |                                        \
- *
- * ProductsListComponentElementInjector     ProductComponentElementInjector
- */

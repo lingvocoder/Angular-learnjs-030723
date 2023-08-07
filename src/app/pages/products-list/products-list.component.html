@@ -1,3 +1,4 @@
+<app-counter-input></app-counter-input>
 <div
     *ngIf="products$ | async as productsFromInput; else loader; let productsFromNgIf"
     class="scroll-container"
@@ -45,5 +46,5 @@
 </div>
 
 <ng-template #loader>
-    <mat-spinner></mat-spinner>
+    <mat-spinner class="loader"></mat-spinner>
 </ng-template>
