@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {map, switchMap, tap} from 'rxjs';
 import {IProduct} from '../../shared/products/product.interface';
 import {ProductsStoreService} from '../../shared/products/products-store.service';
 import {SCOPE_NAME} from '../../shared/scope-name/scope-name.token';
@@ -16,8 +17,14 @@ import {SCOPE_NAME} from '../../shared/scope-name/scope-name.token';
     //     },
     // ],
 })
-export class ProductsListComponent implements OnInit {
-    readonly products$ = this.productsStoreService.products$;
+export class ProductsListComponent {
+    readonly products$ = this.activatedRoute.paramMap.pipe(
+        map(paramMap => paramMap.get('subCategoryId')),
+        tap(subCategoryId => {
+            this.productsStoreService.loadProducts(subCategoryId);
+        }),
+        switchMap(() => this.productsStoreService.products$),
+    );
     // eslint-disable-next-line dot-notation
     // readonly products$ = this.activatedRoute.data.pipe(map(data => data['products'] as IProduct[]));
 
@@ -29,10 +36,6 @@ export class ProductsListComponent implements OnInit {
         // console.log('ProductsListComponent', this.scopeName);
         // eslint-disable-next-line no-console
         console.log(this.activatedRoute.snapshot);
-    }
-
-    ngOnInit(): void {
-        this.productsStoreService.loadProducts();
     }
 
     onProductBuy(id: IProduct['_id']) {
