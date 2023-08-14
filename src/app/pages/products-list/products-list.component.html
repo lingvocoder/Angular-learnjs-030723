@@ -1,34 +1,9 @@
-<div>
-    <!-- <input [formControl]="searchControl">
-    {{searchControl.value}}
-    {{searchControl.valid}} -->
-    <!-- {{searchControl.errors | json}} -->
-    <!-- {{(searchControlErrors$ | async) | json}} -->
-    <input
-        #ngModel="ngModel"
-        required
-        appIsStringAsyncValidator
-        [minlength]="3"
-        [ngModelOptions]="{updateOn: 'blur'}"
-        [(ngModel)]="search"
-    />
-    {{ ngModel.value }}
-    {{ ngModel.valid }}
-    {{ ngModel.errors | json }}
-</div>
+<app-filter [brands]="brands$ | async"></app-filter>
 
-<!-- <app-counter-input [formControl]="counterControl"></app-counter-input> -->
-<!-- <app-counter-input [ngModel]="counter" (ngModelChange)="counter = $event"></app-counter-input> -->
-<!-- <app-counter-input #ngModel="ngModel" [(ngModel)]="counter"></app-counter-input> -->
 <div
     *ngIf="products$ | async as productsFromInput; else loader; let productsFromNgIf"
     class="scroll-container"
 >
-    <!-- Sync {{counterControl.value}}
-    Async {{counterControlValue$ | async}} -->
-    <!-- {{counter}} -->
-    <!-- {{ngModel.value}}
-    {{ngModel.touched}} -->
     <ng-container
         *appPagination="
             let productsGroup of productsFromInput | filterByProperty : 'name' : '';

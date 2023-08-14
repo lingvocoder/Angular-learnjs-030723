@@ -13,6 +13,7 @@ import {FilterByPropertyModule} from '../../shared/filter-by-property/filter-by-
 import {ProductsListRoutingModule} from './products-list-routing.module';
 import {CounterInputModule} from '../../shared/counter-input/counter-input.module';
 import {TestValidatorsModule} from '../../shared/test-validators/test-validators.module';
+import {FilterModule} from './filter/filter.module';
 
 @NgModule({
     declarations: [ProductsListComponent],
@@ -31,6 +32,7 @@ import {TestValidatorsModule} from '../../shared/test-validators/test-validators
         ReactiveFormsModule,
         FormsModule,
         TestValidatorsModule,
+        FilterModule,
     ],
     exports: [ProductsListComponent],
 })
