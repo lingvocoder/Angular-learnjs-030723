@@ -6,18 +6,8 @@ import {Observable, of} from 'rxjs';
     providedIn: 'root',
 })
 export class CustomPreloadingService implements PreloadingStrategy {
-    preload({data, path}: Route, load: () => Observable<unknown>): Observable<unknown> {
+    preload({data}: Route, load: () => Observable<unknown>): Observable<unknown> {
         // eslint-disable-next-line dot-notation
-        if (data?.['needPreload']) {
-            // eslint-disable-next-line no-console
-            console.log('Preload', path);
-
-            return load();
-        }
-
-        // eslint-disable-next-line no-console
-        console.log('NO Preload', path);
-
-        return of(null);
+        return data?.['needPreload'] ? load() : of(null);
     }
 }

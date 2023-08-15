@@ -50,7 +50,7 @@ export class CounterInputComponent implements ControlValueAccessor {
     // })
     writeValue(value: number) {
         // eslint-disable-next-line no-console
-        console.log('writeValue', value);
+        // console.log('writeValue', value);
         this.counter = value;
 
         this.changeDetectorRef.markForCheck();

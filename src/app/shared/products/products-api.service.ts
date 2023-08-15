@@ -1,8 +1,7 @@
 import {map, Observable} from 'rxjs';
-import {Inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {IProduct} from './product.interface';
-import {BASE_URL} from '../base-url/base-url.token';
 import {IProductsDto} from './products.dto';
 import {IProductDto} from './product.dto';
 import {getParamsFromObject} from '../params/get-params-from-object';
@@ -11,13 +10,7 @@ import {getParamsFromObject} from '../params/get-params-from-object';
     providedIn: 'root',
 })
 export class ProductsApiService {
-    constructor(
-        @Inject(BASE_URL) private readonly baseUrl: string,
-        private readonly httpClient: HttpClient,
-    ) {
-        // eslint-disable-next-line no-console
-        console.log(this.baseUrl);
-    }
+    constructor(private readonly httpClient: HttpClient) {}
 
     getProducts$(subCategoryId?: string | null): Observable<IProduct[]> {
         return this.httpClient
