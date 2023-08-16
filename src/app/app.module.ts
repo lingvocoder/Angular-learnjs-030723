@@ -5,6 +5,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -14,6 +15,7 @@ import {PopupHostModule} from './components/popup-host/popup-host.module';
 import {InsertShadowModule} from './shared/insert-shadow/insert-shadow.module';
 import {BaseUrlInterceptor} from './shared/base-url/base-url.interceptor';
 import {stateReducer} from './store/reducer';
+import {storeEffects} from './store/effects';
 
 @NgModule({
     declarations: [AppComponent],
@@ -28,6 +30,7 @@ import {stateReducer} from './store/reducer';
         InsertShadowModule,
         HttpClientModule,
         StoreModule.forRoot(stateReducer),
+        EffectsModule.forRoot(storeEffects),
         StoreDevtoolsModule.instrument(),
     ],
     providers: [

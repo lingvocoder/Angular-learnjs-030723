@@ -63,9 +63,9 @@ export class FilterComponent implements OnChanges, OnInit, OnDestroy {
                 ),
                 takeUntil(this.destroy$),
             )
-            .subscribe(filter => {
+            .subscribe(_filter => {
                 // eslint-disable-next-line no-console
-                console.log(filter);
+                // console.log(filter);
             });
     }
 
