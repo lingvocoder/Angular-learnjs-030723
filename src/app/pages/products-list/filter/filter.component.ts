@@ -4,27 +4,29 @@ import {
     EventEmitter,
     Input,
     OnChanges,
-    OnDestroy,
     OnInit,
     Output,
     SimpleChanges,
 } from '@angular/core';
-import {Subject, debounceTime, map, takeUntil} from 'rxjs';
+import {debounceTime, map, takeUntil} from 'rxjs';
 import {FormArray, FormControl, FormGroup} from '@angular/forms';
 import {IProductsFilter} from './products-filter.interface';
+import {DestroyService} from '../../../shared/destroy/destroy.service';
 
 @Component({
     selector: 'app-filter',
     templateUrl: './filter.component.html',
     styleUrls: ['./filter.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [DestroyService],
 })
-export class FilterComponent implements OnChanges, OnInit, OnDestroy {
-    private readonly destroy$ = new Subject<void>();
-
+export class FilterComponent implements OnChanges, OnInit {
     @Input() brands: string[] | null = null;
+    @Input() initialFilter!: IProductsFilter;
 
     @Output() changeFilter = new EventEmitter<IProductsFilter>();
+    // Output by stream
+    // @Output() readonly changeFilter: Observable<IProductsFilter>;
 
     readonly filterForm = new FormGroup({
         name: new FormControl(''),
@@ -35,7 +37,13 @@ export class FilterComponent implements OnChanges, OnInit, OnDestroy {
         }),
     });
 
+    constructor(private readonly destroy$: DestroyService) {
+        // Необходимо делать это в конструкторе, т.к. при создании потока нужна уже созданная форма (filterForm)
+        // this.changeFilter = this.getFilterStream$();
+    }
+
     ngOnInit(): void {
+        this.initFormValue();
         this.listenFormChange();
     }
 
@@ -45,9 +53,10 @@ export class FilterComponent implements OnChanges, OnInit, OnDestroy {
         }
     }
 
-    ngOnDestroy(): void {
-        this.destroy$.next();
-        this.destroy$.complete();
+    private initFormValue() {
+        const {name, priceRange} = this.initialFilter;
+
+        this.filterForm.patchValue({name, priceRange});
     }
 
     private listenFormChange() {
@@ -63,18 +72,9 @@ export class FilterComponent implements OnChanges, OnInit, OnDestroy {
                 ),
                 takeUntil(this.destroy$),
             )
-            .subscribe(_filter => {
-                // eslint-disable-next-line no-console
-                // console.log(filter);
+            .subscribe(filter => {
+                this.changeFilter.emit(filter);
             });
-    }
-
-    private getBrandsListFromArray(brandsValueList: boolean[]): string[] {
-        if (!this.brands) {
-            return [];
-        }
-
-        return this.brands.filter((_, index) => brandsValueList[index]);
     }
 
     private initBrandsForm() {
@@ -85,5 +85,23 @@ export class FilterComponent implements OnChanges, OnInit, OnDestroy {
         const brandsForm = new FormArray<FormControl<boolean>>(brandsControls);
 
         this.filterForm.setControl('brands', brandsForm);
+    }
+
+    // Output by stream
+    // private getFilterStream$(): Observable<IProductsFilter> {
+    //     return this.filterForm.valueChanges.pipe(
+    //         map(
+    //             ({brands, name, ...otherValues}) =>
+    //                 ({
+    //                     ...otherValues,
+    //                     name,
+    //                     brands: this.getBrandsListFromArray(brands as boolean[]),
+    //                 } as IProductsFilter),
+    //         ),
+    //     );
+    // }
+
+    private getBrandsListFromArray(brandsFormValue: boolean[]): IProductsFilter['brands'] {
+        return !this.brands ? [] : this.brands.filter((_, index) => brandsFormValue[index]);
     }
 }
